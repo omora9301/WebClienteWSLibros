@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Obtener">
+        <s:complexType />
+      </s:element>
+      <s:element name="ObtenerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerResult" type="tns:ArrayOfClassLibrosExt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfClassLibrosExt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ClassLibrosExt" nillable="true" type="tns:ClassLibrosExt" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ClassLibrosExt">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Titulo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Autor" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Categoria" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Editorial" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Edicion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ISBN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Categorias" type="tns:ClassCategoriasExt" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ClassCategoriasExt">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdC" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="NombreC" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ObtenerCategoria">
+        <s:complexType />
+      </s:element>
+      <s:element name="ObtenerCategoriaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerCategoriaResult" type="tns:ArrayOfClassCategoriasExt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfClassCategoriasExt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ClassCategoriasExt" nillable="true" type="tns:ClassCategoriasExt" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Agregar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="l" type="tns:ClassLibrosExt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AgregarResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="IdObtener">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IdObtenerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IdObtenerResult" type="tns:ClassLibrosExt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Editar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="l" type="tns:ClassLibrosExt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EditarResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="Eliminar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="Buscar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="valor" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuscarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BuscarResult" type="tns:ArrayOfClassLibrosExt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ObtenerSoapIn">
+    <wsdl:part name="parameters" element="tns:Obtener" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerCategoriaSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerCategoria" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerCategoriaSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerCategoriaResponse" />
+  </wsdl:message>
+  <wsdl:message name="AgregarSoapIn">
+    <wsdl:part name="parameters" element="tns:Agregar" />
+  </wsdl:message>
+  <wsdl:message name="AgregarSoapOut">
+    <wsdl:part name="parameters" element="tns:AgregarResponse" />
+  </wsdl:message>
+  <wsdl:message name="IdObtenerSoapIn">
+    <wsdl:part name="parameters" element="tns:IdObtener" />
+  </wsdl:message>
+  <wsdl:message name="IdObtenerSoapOut">
+    <wsdl:part name="parameters" element="tns:IdObtenerResponse" />
+  </wsdl:message>
+  <wsdl:message name="EditarSoapIn">
+    <wsdl:part name="parameters" element="tns:Editar" />
+  </wsdl:message>
+  <wsdl:message name="EditarSoapOut">
+    <wsdl:part name="parameters" element="tns:EditarResponse" />
+  </wsdl:message>
+  <wsdl:message name="EliminarSoapIn">
+    <wsdl:part name="parameters" element="tns:Eliminar" />
+  </wsdl:message>
+  <wsdl:message name="EliminarSoapOut">
+    <wsdl:part name="parameters" element="tns:EliminarResponse" />
+  </wsdl:message>
+  <wsdl:message name="BuscarSoapIn">
+    <wsdl:part name="parameters" element="tns:Buscar" />
+  </wsdl:message>
+  <wsdl:message name="BuscarSoapOut">
+    <wsdl:part name="parameters" element="tns:BuscarResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebServiceLibrosSoap">
+    <wsdl:operation name="Obtener">
+      <wsdl:input message="tns:ObtenerSoapIn" />
+      <wsdl:output message="tns:ObtenerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerCategoria">
+      <wsdl:input message="tns:ObtenerCategoriaSoapIn" />
+      <wsdl:output message="tns:ObtenerCategoriaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Agregar">
+      <wsdl:input message="tns:AgregarSoapIn" />
+      <wsdl:output message="tns:AgregarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IdObtener">
+      <wsdl:input message="tns:IdObtenerSoapIn" />
+      <wsdl:output message="tns:IdObtenerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Editar">
+      <wsdl:input message="tns:EditarSoapIn" />
+      <wsdl:output message="tns:EditarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Eliminar">
+      <wsdl:input message="tns:EliminarSoapIn" />
+      <wsdl:output message="tns:EliminarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Buscar">
+      <wsdl:input message="tns:BuscarSoapIn" />
+      <wsdl:output message="tns:BuscarSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceLibrosSoap" type="tns:WebServiceLibrosSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Obtener">
+      <soap:operation soapAction="http://tempuri.org/Obtener" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerCategoria">
+      <soap:operation soapAction="http://tempuri.org/ObtenerCategoria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Agregar">
+      <soap:operation soapAction="http://tempuri.org/Agregar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IdObtener">
+      <soap:operation soapAction="http://tempuri.org/IdObtener" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Editar">
+      <soap:operation soapAction="http://tempuri.org/Editar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Eliminar">
+      <soap:operation soapAction="http://tempuri.org/Eliminar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Buscar">
+      <soap:operation soapAction="http://tempuri.org/Buscar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceLibrosSoap12" type="tns:WebServiceLibrosSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Obtener">
+      <soap12:operation soapAction="http://tempuri.org/Obtener" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerCategoria">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerCategoria" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Agregar">
+      <soap12:operation soapAction="http://tempuri.org/Agregar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IdObtener">
+      <soap12:operation soapAction="http://tempuri.org/IdObtener" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Editar">
+      <soap12:operation soapAction="http://tempuri.org/Editar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Eliminar">
+      <soap12:operation soapAction="http://tempuri.org/Eliminar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Buscar">
+      <soap12:operation soapAction="http://tempuri.org/Buscar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebServiceLibros">
+    <wsdl:port name="WebServiceLibrosSoap" binding="tns:WebServiceLibrosSoap">
+      <soap:address location="http://localhost:62975/Models/WebServiceLibros.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceLibrosSoap12" binding="tns:WebServiceLibrosSoap12">
+      <soap12:address location="http://localhost:62975/Models/WebServiceLibros.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

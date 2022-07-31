@@ -1,0 +1,86 @@
+﻿@model IEnumerable<WebClienteWSLibros.ServiceReferenceLibros.ClassLibrosExt>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@if (TempData["resu"] != null)
+{
+    <h5 class="alert alert-success">@TempData["resu"]</h5>
+}
+@if (TempData["error"] != null)
+{
+    <h5 class="alert alert-danger">@TempData["error"]</h5>
+}
+<form action="/" method="post">
+    <table>
+        <tr>
+            <td><input type="text" name="valor" value="" class="form-control" /></td>
+            <td><input type="submit" name="" value="Buscar" formaction="/Home/Buscar" class="btn btn-outline-success" /></td>
+        </tr>
+        
+    </table>    
+</form>
+<hr />
+<p>
+    @Html.ActionLink("Agregar", "Create",null, new { @class="btn btn-outline-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Autor)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.Categoria)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Editorial)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Edicion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ISBN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Categorias.NombreC)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Autor)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Categoria)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Editorial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Edicion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ISBN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categorias.NombreC)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class="btn btn-outline-warning" })
+                @*@Html.ActionLink("Details", "Details", new { id = item.Id }) |*@
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }, new { @class = "btn btn-outline-danger" })
+            </td>
+        </tr>
+    }
+
+</table>
